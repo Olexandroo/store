@@ -6,8 +6,7 @@ $product_info = [
   'Category'=>$categories[$_POST['goods']],
   'Name' => $_POST['NameOfProduct'],
   'Description' => $_POST['Description'],
-  'Price' => $_POST['Price'],
-    'Image path' => $uploadfile
+  'Price' => $_POST['Price']
 ];
 
 file_put_contents(JSON_PATH,json_encode($product_info),FILE_APPEND);
