@@ -1,0 +1,27 @@
+SELECT * FROM `Test` WHERE id in (SELECT id FROM `order` WHERE `user_id` = 2)
+
+
+SELECT * FROM `products` JOIN `order` on `products`.`id` = `order`.`product_id` WHERE `order`.`user_id`= 2
+
+
+SELECT sum(o.quantity),products.id FROM `products` JOIN `order` o  on o.`product_id` = `products`.`id`  GROUP by products.id
+
+
+SELECT * FROM `products` JOIN `order` on `order`.`user_id`= 2 = `products`.`id`
+
+
+
+SELECT * FROM `products` JOIN `order` on `products`.`id` = `order`.`product_id` WHERE `order`.`user_id`= 2 and `products`.`Price` > 25
+
+SELECT Users.name, sum(products.Price * `order`.`quantity`) FROM Users JOIN `order` ON Users.id = `order`.`user_id` JOIN products ON `order`.`product_id` = products.id GROUP BY Users.id
+
+
+UPDATE Users as us SET us.balance =
+0.1 * (SELECT u.name, sum(products.Price * `order`.`quantity`) FROM Users as u JOIN `order` ON u.`id` = `order`.`user_id` JOIN products ON `order`.`product_id` = products.id GROUP BY u.`id` )
+User2 16825
+User3 5000
+
+UPDATE Users as us
+JOIN `order` ON us.`id` = `order`.`user_id` 
+JOIN products ON `order`.`product_id` = products.id 
+SET us.balance =0.1 *  products.Price * `order`.`quantity`
