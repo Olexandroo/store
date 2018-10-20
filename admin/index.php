@@ -1,13 +1,5 @@
 <?php
-$link = mysqli_connect('localhost','root','','adminstore');
-if(mysqli_connect_errno($link)){
-    echo "Не удалось подключиться к бд".mysqli_connect_error();
-}
-$res =mysqli_query($link, "SELECT * FROM Users");
-$row = mysqli_fetch_all($res,MYSQLI_ASSOC);
-
-//var_dump($row);
-
+require 'db.php';
 ?>
 <html>
 
@@ -36,13 +28,13 @@ $row = mysqli_fetch_all($res,MYSQLI_ASSOC);
                 <td>' .$value['created_at'] . '</td>
                 <td><a href="newUser.php">|  |</a></td>
                 <td><a href="delete.php?id='.$value['id'].'" id="'.$value['id'].'"><button>x</button></a></td>
-                <td><a href="update.php?id='.$value['id'].'" >|  |</a></td>
+                <td><a href="upd.php?id='.$value['id'].'" >|  |</a></td>
+             
               </tr>';
 
     }
     ?>
-
 </table>
-
+<button><a href="upd.php" >|  |</a></button>
 </body>
 </html>
